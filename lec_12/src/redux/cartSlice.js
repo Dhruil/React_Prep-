@@ -10,8 +10,8 @@ const cartSlice = createSlice({
         addItem : (state,action) =>{//addItem,removeItmes,clearCart are actions : it's reducer function modify the based on action
             state.items.push(action.payload);
         },
-        removeItems:(state,action) =>{
-            state.items.pop();
+        removeItem: (state, action) => {
+      state.items = state.items.filter((item) => item.id != action.payload)
         },
         clearCart :(state,action) =>{
             console.log(current(state));
@@ -20,6 +20,7 @@ const cartSlice = createSlice({
             //return{items : []} modify the Originalstate or above mention
 // state = [] we can't modify like this  because it is onother state varible it not change originalState      },
     },
+}
 })
 
 // cartSlice = {
@@ -33,7 +34,7 @@ const cartSlice = createSlice({
 // }
 
 
-export const {addItem,removeItems,clearCart}  = cartSlice.actions // many action hence s and individual export;
+export const {addItem,removeItem,clearCart}  = cartSlice.actions // many action hence s and individual export;
 
 //export individual reducer hence it has not s
 export default cartSlice.reducer
