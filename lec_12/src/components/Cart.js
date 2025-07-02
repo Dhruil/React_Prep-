@@ -180,7 +180,7 @@ import { useDispatch, useSelector } from 'react-redux';
 const CDN_URL =
   "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/";
 
-export default function Cart() {
+function Cart() {
   const dispatch = useDispatch(); 
   const initialCartItems = useSelector((store) => store.cart.items);
   console.log(initialCartItems)
@@ -411,3 +411,4 @@ export default function Cart() {
     </div>
   );
 }
+ export default Cart;
