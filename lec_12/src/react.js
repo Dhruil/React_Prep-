@@ -13,7 +13,7 @@ import { Offline } from "./components/Offline";
 import UserContext from "./utils/UserContext";
 import { Provider } from "react-redux"
 import appstore from "./redux/appstore";
-import Cart from "./components/cart";
+import Cart from "./components/Cart";
 // AppLayout component to show: Header, Body, Footer
 
 const About = lazy(() => import("./components/About"));
