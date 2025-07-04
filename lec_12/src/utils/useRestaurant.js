@@ -16,7 +16,7 @@ const useRestaurant = () => {
   const fetchData = async () => {
     setLoading(true); //Set loading to true when fetch starts
     try {
-      const data = await fetch(swigy);
+      const data = await fetch("http://localhost:5000/api/restaurants");
       const json = await data.json();
       console.log(json);
       await setRestaurantList(
