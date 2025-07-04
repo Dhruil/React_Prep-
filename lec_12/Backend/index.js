@@ -34,8 +34,8 @@ app.get("/api/restaurants", async (req, res) => {
       throw new Error("Swiggy API response not OK");
     }
 
-    const json = await response.json();
-    res.json(json);
+    const restaurantMenu = await response.json();
+    res.json(restaurantMenu);
   } catch (error) {
     console.error("Error fetching restaurant list:", error.message);
     res.status(500).json({ error: "Failed to fetch restaurant list" });
