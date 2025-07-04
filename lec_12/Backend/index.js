@@ -64,36 +64,33 @@ app.get("/api/restaurant/:resId", async (req, res) => {
 
     const json = await response.json();
 
-    // Extract restaurant data
-    const restaurantData =
-      json?.data?.cards
-        ?.map((x) => x.card)
-        ?.find(
-          (x) => x && x.card["@type"] === RESTAURANT_TYPE_KEY
-        )?.card?.info || null;
+    // // Extract restaurant data
+    // const restaurantData =
+    //   json?.data?.cards
+    //     ?.map((x) => x.card)
+    //     ?.find(
+    //       (x) => x && x.card["@type"] === RESTAURANT_TYPE_KEY
+    //     )?.card?.info || null;
 
-    // Extract menu item data
-    const menuItemsData =
-      json?.data?.cards
-        ?.find((x) => x.groupedCard)
-        ?.groupedCard?.cardGroupMap?.REGULAR?.cards?.map((x) => x.card?.card)
-        ?.filter((x) => x["@type"] === MENU_ITEM_TYPE_KEY)
-        ?.map((x) => x.itemCards)
-        .flat()
-        .map((x) => x.card?.info) || [];
+    // // Extract menu item data
+    // const menuItemsData =
+    //   json?.data?.cards
+    //     ?.find((x) => x.groupedCard)
+    //     ?.groupedCard?.cardGroupMap?.REGULAR?.cards?.map((x) => x.card?.card)
+    //     ?.filter((x) => x["@type"] === MENU_ITEM_TYPE_KEY)
+    //     ?.map((x) => x.itemCards)
+    //     .flat()
+    //     .map((x) => x.card?.info) || [];
 
-    // Filter out duplicate menu items if needed
-    const uniqueMenuItems = [];
-    menuItemsData.forEach((item) => {
-      if (!uniqueMenuItems.find((x) => x.id === item.id)) {
-        uniqueMenuItems.push(item);
-      }
-    });
+    // // Filter out duplicate menu items if needed
+    // const uniqueMenuItems = [];
+    // menuItemsData.forEach((item) => {
+    //   if (!uniqueMenuItems.find((x) => x.id === item.id)) {
+    //     uniqueMenuItems.push(item);
+    //   }
+    // });
 
-    res.json({
-      restaurant: restaurantData,
-      menu: uniqueMenuItems,
-    });
+    res.json({json});
   } catch (error) {
     console.error("Error fetching restaurant details:", error.message);
     res.status(500).json({ error: "Failed to fetch restaurant details" });
