@@ -15,7 +15,7 @@ const useRestaurantList = (resId) => {
 
   const getRestaurantData = async () => {
     try {
-      const data = await fetch(RESTO_URL + resId);
+      const data = await fetch(`https://meal-wala.vercel.app/api/restaurant/${resId}`);
 
       const json = await data.json();
       console.log(json);
