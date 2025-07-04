@@ -17,10 +17,10 @@ const useRestaurantList = (resId) => {
     try {
       const data = await fetch(`https://meal-wala.vercel.app/api/restaurant/${resId}`);
 
-      const json = await data.json();
-      console.log(json);
+      const restaurantMenu = await data.json();
+      console.log(restaurantMenu.json);
       const restaurantData =
-        json?.data?.cards
+        restaurantMenu?.json?.data?.cards
           ?.map((x) => x.card)
           ?.find((x) => x && x.card["@type"] === RESTAURANT_TYPE_KEY)?.card
           ?.info || null;
@@ -28,7 +28,7 @@ const useRestaurantList = (resId) => {
       console.log(restaurantData);
       // Set menu item data
       const menuTypesData =
-        json?.data?.cards
+        restaurantMenu?.json?.data?.cards
           .find((x) => x.groupedCard)
           ?.groupedCard?.cardGroupMap?.REGULAR?.cards?.map((x) => x.card?.card)
           ?.filter((x) => x["@type"] == MENU_ITEM_TYPE_KEY) || [];
