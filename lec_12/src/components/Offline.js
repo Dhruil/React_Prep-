@@ -1,4 +1,4 @@
-import Offlineimg from "../utils/images/Offline.png"
+import Offlineimg from "../utils/images/offline.png"
 export const Offline = () => {
   return (
     <div className="container">
